@@ -1,4 +1,4 @@
-package com.trabalhofinal.trabalhofinal;
+package com.trabalhofinal.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

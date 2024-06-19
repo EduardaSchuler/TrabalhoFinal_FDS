@@ -23,4 +23,16 @@ public class Aplicativo {
         return custoMensal;
     }
 
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCustoMensal(double custoMensal) {
+        this.custoMensal = custoMensal;
+    }
+
 }

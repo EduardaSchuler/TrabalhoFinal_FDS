@@ -37,5 +37,23 @@ public class Assinatura {
         return fimVigencia;
     }
 
-    
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setAplicativo(Aplicativo aplicativo) {
+        this.aplicativo = aplicativo;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setInicioVigencia(Date inicioVigencia) {
+        this.inicioVigencia = inicioVigencia;
+    }
+
+    public void setFimVigencia(Date fimVigencia) {
+        this.fimVigencia = fimVigencia;
+    }
 }

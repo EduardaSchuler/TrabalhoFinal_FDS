@@ -23,4 +23,15 @@ public class Cliente {
         return email;
     }
 
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

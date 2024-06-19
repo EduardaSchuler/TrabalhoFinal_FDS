@@ -37,5 +37,23 @@ public class Pagamento {
         return promocao;
     }
 
-    
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setAssinatura(Assinatura assinatura) {
+        this.assinatura = assinatura;
+    }
+
+    public void setValorPago(double valorPago) {
+        this.valorPago = valorPago;
+    }
+
+    public void setDataPagamento(Date dataPagamento) {
+        this.dataPagamento = dataPagamento;
+    }
+
+    public void setPromocao(String promocao) {
+        this.promocao = promocao;
+    }
 }

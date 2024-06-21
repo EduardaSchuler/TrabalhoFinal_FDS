@@ -1,6 +1,12 @@
 package com.trabalhofinal.domain.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Aplicativo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long codigo; // Código identificador do aplicativo
     private String nome; // Nome fantasia pelo qual o aplicativo é conhecido
     private double custoMensal; // Valor da assinatura mensal

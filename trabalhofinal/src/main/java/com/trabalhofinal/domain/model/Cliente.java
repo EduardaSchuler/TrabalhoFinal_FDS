@@ -1,6 +1,12 @@
 package com.trabalhofinal.domain.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Cliente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long codigo; //Código identificador do cliente
     private String nome; //Nome do cliente
     private String email; //Email do cliente

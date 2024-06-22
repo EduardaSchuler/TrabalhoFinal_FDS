@@ -1,8 +1,6 @@
 package com.trabalhofinal.domain.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,43 +8,38 @@ import org.springframework.stereotype.Service;
 
 import com.trabalhofinal.domain.model.Assinatura;
 import com.trabalhofinal.domain.model.Pagamento;
-import com.trabalhofinal.domain.repository.IAssinaturaRepository;
 import com.trabalhofinal.domain.repository.IPagamentoRepository;
 
 @Service
 public class PagamentoService {
-    @Autowired
+   @Autowired
     private IPagamentoRepository pagamentoRepository;
 
-    @Autowired
-    private IAssinaturaRepository assinaturaRepository;
-
-    public Pagamento registrarPagamento(Long codigoAssinatura, double valorPago, String promocao) throws ParseException {
-        Assinatura assinatura = assinaturaRepository.findById(codigoAssinatura).orElseThrow(() -> new RuntimeException("Assinatura não encontrada"));
-
-        String dataPagamento = LocalDate.now().toString();
-        String dateFormat = "yyyy-MM-dd";
-        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
-
-        Pagamento pagamento = new Pagamento();
-        pagamento.setAssinatura(assinatura);
-        pagamento.setValorPago(valorPago);
-        pagamento.setDataPagamento(sdf.parse(dataPagamento));
-        pagamento.setPromocao(promocao);
-
-        // lógica de extensão de vigência da assinatura
-        // if (valorPago == assinatura.getAplicativo().getCustoMensal()) {
-        //     LocalDate novaDataFimVigencia = assinatura.getFimVigencia().isAfter(LocalDate.now())
-        //             ? assinatura.getFimVigencia().plusDays(30)
-        //             : LocalDate.now().plusDays(30);
-        //     assinatura.setFimVigencia(novaDataFimVigencia);
-        //     assinaturaRepository.save(assinatura);
-        // }
-
-        return pagamentoRepository.save(pagamento);
+    public List<Pagamento> listarTodos() {
+        return pagamentoRepository.todos();
     }
 
-    public List<Pagamento> listarPagamentos() {
-        return pagamentoRepository.findAll();
+    public Pagamento consultaPorCodigo(long codigo){
+        return pagamentoRepository.consultaPorCodigo(codigo);
+    }
+
+    public boolean cadastrarNovo(Pagamento pagamento){
+        return pagamentoRepository.cadastrarNovo(pagamento);
+    }
+
+    public Pagamento atualizaPagamentoAssinatura(long codigo, Assinatura novaAssinatura){
+        return pagamentoRepository.atualizaPagamentoAssinatura(codigo, novaAssinatura);
+    }
+
+    public Pagamento atualizaValorPago(long codigo, double novoValorPago){
+        return pagamentoRepository.atualizaValorPago(codigo, novoValorPago);
+    }
+
+    public Pagamento atualizaDataPagamento(long codigo, Date novaDataPagamento){
+        return pagamentoRepository.atualizaDataPagamento(codigo, novaDataPagamento);
+    }
+
+    public Pagamento editarPromocao(long codigo, String novaPromocao){
+        return pagamentoRepository.editarPromocao(codigo, novaPromocao);
     }
 }

@@ -46,7 +46,7 @@ public class AplicativoRepositoryImpl implements IAplicativoRepository{
     
     @Override
     public Aplicativo atualizaCusto(long codigo, Double novoCusto){
-        consultaPorCodigo(codigo).setCustoMensal(novoCusto);;
+        consultaPorCodigo(codigo).setCustoMensal(novoCusto);
         return consultaPorCodigo(codigo);
     }
 }

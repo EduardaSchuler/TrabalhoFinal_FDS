@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class Assinatura {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long codigo; //Código da assinatura
     private Aplicativo aplicativo; //Aplicativo de que trata a assinatura
     private Cliente cliente; //Cliente de que trata a assinatura

@@ -11,10 +11,12 @@ import com.trabalhofinal.domain.repository.IAplicativoRepository;
 import com.trabalhofinal.domain.repository.IAssinaturaRepository;
 import com.trabalhofinal.domain.repository.IClienteRepository;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AssinaturaService {
@@ -31,7 +33,7 @@ public class AssinaturaService {
         return assinaturaRepository.findAll();
     }
 
-   /*  public Assinatura criarAssinatura(Long codigoCliente, Long codigoAplicativo) throws ParseException {        
+    public Assinatura criarAssinatura(Long codigoCliente, Long codigoAplicativo) throws ParseException {        
         String inicioVigencia = LocalDate.now().toString();
         String fimVigencia = LocalDate.now().plusDays(7).toString();
         String dateFormat = "yyyy-MM-dd";
@@ -46,7 +48,7 @@ public class AssinaturaService {
         assinatura.setFimVigencia(sdf.parse(fimVigencia));
 
         return assinaturaRepository.save(assinatura);
-    } */
+    } 
 
     public List<Assinatura> listarPorTipo(String tipo) {
         LocalDate hoje = LocalDate.now();
@@ -67,4 +69,13 @@ public class AssinaturaService {
     public List<Assinatura> listarPorAplicativo(Long codigoAplicativo) {
         return assinaturaRepository.findByAplicativoCodigo(codigoAplicativo);
     }
+
+    // public boolean assinaturaValida(Long codigoAssinatura) {
+    //     Optional<Assinatura> assinatura = assinaturaRepository.findById(codigoAssinatura);
+    //     if (assinatura == null) {
+    //         return false;
+    //     }
+    //     Date now = new Date(codigoAssinatura);
+    //     return assinatura.getFimVigencia().after(now);
+    // }
 }

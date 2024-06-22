@@ -14,4 +14,5 @@ public interface IAssinaturaRepository {
     List<Assinatura> findByAplicativoCodigo(Long aplicativoCodigo);
     Optional<Assinatura> findById(Long id);
     Assinatura save(Assinatura assinatura);
+    boolean assinaturaValida(Long codigoAssinatura);
 }

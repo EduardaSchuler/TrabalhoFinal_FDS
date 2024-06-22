@@ -6,7 +6,6 @@ import javax.persistence.*;
 public class Aplicativo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long codigo; // Código identificador do aplicativo
     private String nome; // Nome fantasia pelo qual o aplicativo é conhecido
     private double custoMensal; // Valor da assinatura mensal
@@ -27,10 +26,6 @@ public class Aplicativo {
 
     public double getCustoMensal() {
         return custoMensal;
-    }
-
-    public void setCodigo(long codigo) {
-        this.codigo = codigo;
     }
 
     public void setNome(String nome) {

@@ -1,5 +1,6 @@
 package com.trabalhofinal.domain.service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
@@ -20,7 +21,7 @@ public class PagamentoService {
     @Autowired
     private IAssinaturaRepository assinaturaRepository;
 
-/*     public Pagamento registrarPagamento(Long codigoAssinatura, double valorPago, String promocao) {
+    public Pagamento registrarPagamento(Long codigoAssinatura, double valorPago, String promocao) throws ParseException {
         Assinatura assinatura = assinaturaRepository.findById(codigoAssinatura).orElseThrow(() -> new RuntimeException("Assinatura não encontrada"));
 
         String dataPagamento = LocalDate.now().toString();
@@ -34,16 +35,16 @@ public class PagamentoService {
         pagamento.setPromocao(promocao);
 
         // lógica de extensão de vigência da assinatura
-        if (valorPago == assinatura.getAplicativo().getCustoMensal()) {
-            LocalDate novaDataFimVigencia = assinatura.getFimVigencia().isAfter(LocalDate.now())
-                    ? assinatura.getFimVigencia().plusDays(30)
-                    : LocalDate.now().plusDays(30);
-            assinatura.setFimVigencia(novaDataFimVigencia);
-            assinaturaRepository.save(assinatura);
-        }
+        // if (valorPago == assinatura.getAplicativo().getCustoMensal()) {
+        //     LocalDate novaDataFimVigencia = assinatura.getFimVigencia().isAfter(LocalDate.now())
+        //             ? assinatura.getFimVigencia().plusDays(30)
+        //             : LocalDate.now().plusDays(30);
+        //     assinatura.setFimVigencia(novaDataFimVigencia);
+        //     assinaturaRepository.save(assinatura);
+        // }
 
         return pagamentoRepository.save(pagamento);
-    } */
+    }
 
     public List<Pagamento> listarPagamentos() {
         return pagamentoRepository.findAll();

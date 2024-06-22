@@ -14,16 +14,18 @@ public class AplicativoService {
     private IAplicativoRepository aplicativoRepository;
 
     public List<Aplicativo> listarTodos() {
-        return aplicativoRepository.findAll();
+        return aplicativoRepository.todos();
     }
 
-    public Aplicativo salvar(Aplicativo aplicativo) {
-        return aplicativoRepository.save(aplicativo);
+    public boolean salvar(Aplicativo aplicativo) {
+        return aplicativoRepository.cadastrarNovo(aplicativo);
     }
 
-    public Aplicativo atualizarCusto(Long id, double custoMensal) {
-        Aplicativo aplicativo = aplicativoRepository.findById(id).orElseThrow(() -> new RuntimeException("Aplicativo não encontrado"));
-        aplicativo.setCustoMensal(custoMensal);
-        return aplicativoRepository.save(aplicativo);
+    public Aplicativo editarNome(long codigo, String novoNome){
+        return aplicativoRepository.editarNome(codigo, novoNome);
+    }
+
+    public Aplicativo atualizarCusto(long codigo, double custoMensal) {
+        return aplicativoRepository.atualizaCusto(codigo, custoMensal);
     }
 }

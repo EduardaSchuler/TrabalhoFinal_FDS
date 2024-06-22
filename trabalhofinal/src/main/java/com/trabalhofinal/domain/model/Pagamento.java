@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class Pagamento {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long codigo; //Identificador único do pagamento
     private Assinatura assinatura; // Assinatura paga
     private double valorPago; // Valor pago

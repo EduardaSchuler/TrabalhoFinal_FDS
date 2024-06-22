@@ -17,7 +17,11 @@ public class AplicativoService {
         return aplicativoRepository.todos();
     }
 
-    public boolean salvar(Aplicativo aplicativo) {
+    public Aplicativo consultaPorCodigo(long codigo){
+        return aplicativoRepository.consultaPorCodigo(codigo);
+    }
+
+    public boolean cadastraNovo(Aplicativo aplicativo) {
         return aplicativoRepository.cadastrarNovo(aplicativo);
     }
 

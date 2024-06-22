@@ -47,7 +47,7 @@ public class ClienteRepositoryImpl implements IClienteRepository{
     
     @Override
     public Cliente editarEmail(long codigo, String emailNovo){
-        consultaPorCodigo(codigo).setNome(emailNovo);
+        consultaPorCodigo(codigo).setEmail(emailNovo);
         return consultaPorCodigo(codigo);
     }
 }

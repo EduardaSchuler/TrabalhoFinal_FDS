@@ -1,7 +1,9 @@
 package com.trabalhofinal.domain.model;
 
 import java.util.Date;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Pagamento {
@@ -13,7 +15,12 @@ public class Pagamento {
     private Date dataPagamento; // Data em que o pagamento foi efetivado
     private String promocao; // Código correspondente a promoção usada no pagamento. Pode ser um “none” no caso de não ser usado código nenhum.
 
-    public Pagamento() {
+    public Pagamento(long codigo, Assinatura assinatura,  double valorPago, Date dataPagamento, String promocao) {
+        this.codigo = codigo;
+        this.assinatura = assinatura;
+        this.valorPago = valorPago;
+        this.dataPagamento = dataPagamento;
+        this.promocao = promocao;
     }
 
     public long getCodigo() {

@@ -11,11 +11,11 @@ public class Pagamento {
     @Id
     private long codigo; //Identificador único do pagamento
     private Assinatura assinatura; // Assinatura paga
-    private double valorPago; // Valor pago
+    private Double valorPago; // Valor pago
     private Date dataPagamento; // Data em que o pagamento foi efetivado
     private String promocao; // Código correspondente a promoção usada no pagamento. Pode ser um “none” no caso de não ser usado código nenhum.
 
-    public Pagamento(long codigo, Assinatura assinatura,  double valorPago, Date dataPagamento, String promocao) {
+    public Pagamento(long codigo, Assinatura assinatura,  Double valorPago, Date dataPagamento, String promocao) {
         this.codigo = codigo;
         this.assinatura = assinatura;
         this.valorPago = valorPago;
@@ -31,7 +31,7 @@ public class Pagamento {
         return assinatura;
     }
 
-    public double getValorPago() {
+    public Double getValorPago() {
         return valorPago;
     }
 
@@ -51,7 +51,7 @@ public class Pagamento {
         this.assinatura = assinatura;
     }
 
-    public void setValorPago(double valorPago) {
+    public void setValorPago(Double valorPago) {
         this.valorPago = valorPago;
     }
 

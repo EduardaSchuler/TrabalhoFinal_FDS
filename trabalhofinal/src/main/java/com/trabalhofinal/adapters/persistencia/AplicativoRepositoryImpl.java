@@ -17,7 +17,7 @@ public class AplicativoRepositoryImpl implements IAplicativoRepository{
         apps.add(new Aplicativo(1500, "Netflix", 39.90));
         apps.add(new Aplicativo(1600, "Amazon Prime", 14.90));
         apps.add(new Aplicativo(1700, "Disney Plus", 29.90));
-        apps.add(new Aplicativo(1500, "HBO Max", 49.90));
+        apps.add(new Aplicativo(1800, "HBO Max", 49.90));
     }
 
     @Override

@@ -31,7 +31,7 @@ public class PagamentoService {
         return pagamentoRepository.atualizaPagamentoAssinatura(codigo, novaAssinatura);
     }
 
-    public Pagamento atualizaValorPago(long codigo, double novoValorPago){
+    public Pagamento atualizaValorPago(long codigo, Double novoValorPago){
         return pagamentoRepository.atualizaValorPago(codigo, novoValorPago);
     }
 

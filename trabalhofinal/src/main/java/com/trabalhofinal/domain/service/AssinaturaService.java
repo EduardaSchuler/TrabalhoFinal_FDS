@@ -63,11 +63,11 @@ public class AssinaturaService {
     }
 
     public List<Assinatura> listarPorCliente(Long codigoCliente) {
-        return assinaturaRepository.findByClienteCodigo(codigoCliente);
+        return assinaturaRepository.ConsultaPorCodigoDeCliente(codigoCliente);
     }
 
     public List<Assinatura> listarPorAplicativo(Long codigoAplicativo) {
-        return assinaturaRepository.findByAplicativoCodigo(codigoAplicativo);
+        return assinaturaRepository.consultaPorCodigoDeApp(codigoAplicativo);
     }
 
     // public boolean assinaturaValida(Long codigoAssinatura) {

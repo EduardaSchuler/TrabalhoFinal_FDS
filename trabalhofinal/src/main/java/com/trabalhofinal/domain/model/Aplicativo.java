@@ -9,9 +9,9 @@ public class Aplicativo {
     @Id
     private long codigo; // Código identificador do aplicativo
     private String nome; // Nome fantasia pelo qual o aplicativo é conhecido
-    private double custoMensal; // Valor da assinatura mensal
+    private Double custoMensal; // Valor da assinatura mensal
     
-    public Aplicativo(long codigo, String nome, double custoMensal) {
+    public Aplicativo(long codigo, String nome, Double custoMensal) {
         this.codigo = codigo;
         this.nome = nome;
         this.custoMensal = custoMensal;
@@ -25,7 +25,7 @@ public class Aplicativo {
         return nome;
     }
 
-    public double getCustoMensal() {
+    public Double getCustoMensal() {
         return custoMensal;
     }
 
@@ -33,7 +33,7 @@ public class Aplicativo {
         this.nome = nome;
     }
 
-    public void setCustoMensal(double custoMensal) {
+    public void setCustoMensal(Double custoMensal) {
         this.custoMensal = custoMensal;
     }
 

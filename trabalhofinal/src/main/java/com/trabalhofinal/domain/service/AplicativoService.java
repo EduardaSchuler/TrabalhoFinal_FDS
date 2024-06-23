@@ -29,7 +29,7 @@ public class AplicativoService {
         return aplicativoRepository.editarNome(codigo, novoNome);
     }
 
-    public Aplicativo atualizarCusto(long codigo, double custoMensal) {
+    public Aplicativo atualizarCusto(long codigo, Double custoMensal) {
         return aplicativoRepository.atualizaCusto(codigo, custoMensal);
     }
 }

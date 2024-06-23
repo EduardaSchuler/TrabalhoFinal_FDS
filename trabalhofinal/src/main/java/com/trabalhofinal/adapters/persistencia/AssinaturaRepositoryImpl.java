@@ -1,5 +1,6 @@
 package com.trabalhofinal.adapters.persistencia;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
@@ -20,18 +21,17 @@ public class AssinaturaRepositoryImpl implements IAssinaturaRepository {
 
     
 
-    public AssinaturaRepositoryImpl() {
+    public AssinaturaRepositoryImpl() throws ParseException {
 
         AplicativoRepositoryImpl arl = new AplicativoRepositoryImpl();
         ClienteRepositoryImpl crl = new ClienteRepositoryImpl();
-
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-        
-
-        // aqui não terminei
-        // assinaturas = new LinkedList<Assinatura>();
-        // assinaturas.add(new Assinatura(2222, arl.consultaPorCodigo(1500), crl.consultaPorCodigo(2401),sdf.parse("22/10/2010"), sdf.parse("22/10/2030"));
+        assinaturas = new LinkedList<Assinatura>();
+        assinaturas.add(new Assinatura(2222, arl.consultaPorCodigo(1500), crl.consultaPorCodigo(2401),sdf.parse("22/10/2010"), sdf.parse("22/10/2030")));
+        assinaturas.add(new Assinatura(3333, arl.consultaPorCodigo(1600), crl.consultaPorCodigo(2402),sdf.parse("22/10/2010"), sdf.parse("22/10/2030")));
+        assinaturas.add(new Assinatura(4444, arl.consultaPorCodigo(1700), crl.consultaPorCodigo(2403),sdf.parse("22/10/2010"), sdf.parse("22/10/2030")));
+        assinaturas.add(new Assinatura(5555, arl.consultaPorCodigo(1800), crl.consultaPorCodigo(2404),sdf.parse("22/10/2010"), sdf.parse("22/10/2030")));
     }
 
     @Override
@@ -40,21 +40,21 @@ public class AssinaturaRepositoryImpl implements IAssinaturaRepository {
     }
 
     @Override
-    public List<Assinatura> ConsultaPorDataDeFimVigenciaPosterior(Date date) {
+    public List<Assinatura> consultaPorDataDeFimVigenciaPosterior(Date date) {
         return assinaturas.stream()
         .filter(assinatura->assinatura.getFimVigencia().after(date))
         .collect(Collectors.toList());
     }
 
     @Override
-    public List<Assinatura> ConsultaPorDataDeFimVigenciaAnterior(Date date) {
+    public List<Assinatura> consultaPorDataDeFimVigenciaAnterior(Date date) {
         return assinaturas.stream()
         .filter(assinatura->assinatura.getFimVigencia().before(date))
         .collect(Collectors.toList());
     }
 
     @Override
-    public List<Assinatura> ConsultaPorCodigoDeCliente(Long clienteCodigo) {
+    public List<Assinatura> consultaPorCodigoDeCliente(Long clienteCodigo) {
         return assinaturas.stream()
         .filter(assinatura->assinatura.getCliente().getCodigo() == clienteCodigo)
         .collect(Collectors.toList());
@@ -81,8 +81,7 @@ public class AssinaturaRepositoryImpl implements IAssinaturaRepository {
 
     @Override
     public boolean assinaturaValida(Long codigoAssinatura) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'assinaturaValida'");
+        return true;
     }
     
 

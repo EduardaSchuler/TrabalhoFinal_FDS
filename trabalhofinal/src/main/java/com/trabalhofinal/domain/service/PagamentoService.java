@@ -1,6 +1,6 @@
 package com.trabalhofinal.domain.service;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class PagamentoService {
         return pagamentoRepository.atualizaValorPago(codigo, novoValorPago);
     }
 
-    public Pagamento atualizaDataPagamento(long codigo, Date novaDataPagamento){
+    public Pagamento atualizaDataPagamento(long codigo, LocalDate novaDataPagamento){
         return pagamentoRepository.atualizaDataPagamento(codigo, novaDataPagamento);
     }
 

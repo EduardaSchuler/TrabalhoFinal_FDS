@@ -1,7 +1,9 @@
 package com.trabalhofinal.domain.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.*;
+
+import org.springframework.cglib.core.Local;
 
 @Entity
 public class Assinatura {
@@ -10,11 +12,11 @@ public class Assinatura {
     private long codigo; //Código da assinatura
     private Aplicativo aplicativo; //Aplicativo de que trata a assinatura
     private Cliente cliente; //Cliente de que trata a assinatura
-    private Date inicioVigencia; //Início da vigência da assinatura
-    private Date fimVigencia; //Fim da vigência da assinatura
+    private LocalDate inicioVigencia; //Início da vigência da assinatura
+    private LocalDate fimVigencia; //Fim da vigência da assinatura
 
 
-    public Assinatura(long codigo, Aplicativo aplicativo, Cliente cliente, Date inicioVigencia, Date fimVigencia) {
+    public Assinatura(long codigo, Aplicativo aplicativo, Cliente cliente, LocalDate inicioVigencia, LocalDate fimVigencia) {
         this.codigo = codigo;
         this.aplicativo = aplicativo;
         this.cliente = cliente;
@@ -34,11 +36,11 @@ public class Assinatura {
         return cliente;
     }
 
-    public Date getInicioVigencia() {
+    public LocalDate getInicioVigencia() {
         return inicioVigencia;
     }
 
-    public Date getFimVigencia() {
+    public LocalDate getFimVigencia() {
         return fimVigencia;
     }
 
@@ -54,11 +56,11 @@ public class Assinatura {
         this.cliente = cliente;
     }
 
-    public void setInicioVigencia(Date inicioVigencia) {
+    public void setInicioVigencia(LocalDate inicioVigencia) {
         this.inicioVigencia = inicioVigencia;
     }
 
-    public void setFimVigencia(Date fimVigencia) {
+    public void setFimVigencia(LocalDate fimVigencia) {
         this.fimVigencia = fimVigencia;
     }
 }

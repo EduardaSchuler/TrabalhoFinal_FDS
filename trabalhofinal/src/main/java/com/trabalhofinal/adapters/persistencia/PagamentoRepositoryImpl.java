@@ -1,5 +1,6 @@
 package com.trabalhofinal.adapters.persistencia;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import org.springframework.stereotype.Repository;
@@ -54,7 +55,7 @@ public class PagamentoRepositoryImpl implements IPagamentoRepository{
     }
 
     @Override
-    public Pagamento atualizaDataPagamento(long codigo, Date novaDataPagamento){
+    public Pagamento atualizaDataPagamento(long codigo, LocalDate novaDataPagamento){
         consultaPorCodigo(codigo).setDataPagamento(novaDataPagamento);
         return consultaPorCodigo(codigo);
     }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.trabalhofinal.domain.model.Aplicativo;
+import com.trabalhofinal.domain.model.Assinatura;
 import com.trabalhofinal.domain.repository.IAplicativoRepository;
 
 @Service

@@ -12,7 +12,7 @@ import com.trabalhofinal.domain.repository.IPagamentoRepository;
 
 @Service
 public class PagamentoService {
-   @Autowired
+    @Autowired
     private IPagamentoRepository pagamentoRepository;
 
     public List<Pagamento> listarTodos() {

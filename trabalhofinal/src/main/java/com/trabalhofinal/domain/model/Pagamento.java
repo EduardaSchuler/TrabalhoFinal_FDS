@@ -1,5 +1,6 @@
 package com.trabalhofinal.domain.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,10 +13,10 @@ public class Pagamento {
     private long codigo; //Identificador único do pagamento
     private Assinatura assinatura; // Assinatura paga
     private Double valorPago; // Valor pago
-    private Date dataPagamento; // Data em que o pagamento foi efetivado
+    private LocalDate dataPagamento; // Data em que o pagamento foi efetivado
     private String promocao; // Código correspondente a promoção usada no pagamento. Pode ser um “none” no caso de não ser usado código nenhum.
 
-    public Pagamento(long codigo, Assinatura assinatura,  Double valorPago, Date dataPagamento, String promocao) {
+    public Pagamento(long codigo, Assinatura assinatura,  Double valorPago, LocalDate dataPagamento, String promocao) {
         this.codigo = codigo;
         this.assinatura = assinatura;
         this.valorPago = valorPago;
@@ -35,7 +36,7 @@ public class Pagamento {
         return valorPago;
     }
 
-    public Date getDataPagamento() {
+    public LocalDate getDataPagamento() {
         return dataPagamento;
     }
 
@@ -55,7 +56,7 @@ public class Pagamento {
         this.valorPago = valorPago;
     }
 
-    public void setDataPagamento(Date dataPagamento) {
+    public void setDataPagamento(LocalDate dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
 

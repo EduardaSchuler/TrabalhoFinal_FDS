@@ -1,9 +1,11 @@
 package com.trabalhofinal.domain.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
+import com.trabalhofinal.adapters.persistencia.AssinaturaRepositoryImpl;
 import com.trabalhofinal.domain.model.Aplicativo;
 import com.trabalhofinal.domain.model.Assinatura;
 import com.trabalhofinal.domain.model.Cliente;
@@ -30,22 +32,17 @@ public class AssinaturaService {
     private IAplicativoRepository aplicativoRepository;
 
     public List<Assinatura> listarTodas() {
-        return assinaturaRepository.findAll();
+        return assinaturaRepository.todos();
     }
 
-    public Assinatura criarAssinatura(Long codigoCliente, Long codigoAplicativo) throws ParseException {        
-        String inicioVigencia = LocalDate.now().toString();
-        String fimVigencia = LocalDate.now().plusDays(7).toString();
-        String dateFormat = "yyyy-MM-dd";
-        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+    public boolean criarAssinatura(long codigoCliente, long codigoAplicativo) throws ParseException {        
+        LocalDate inicioVigencia = LocalDate.now();
+        LocalDate fimVigencia = LocalDate.now().plusDays(7);
 
-        Cliente cliente = clienteRepository.findById(codigoCliente).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
-        Aplicativo aplicativo = aplicativoRepository.findById(codigoAplicativo).orElseThrow(() -> new RuntimeException("Aplicativo não encontrado"));
-        Assinatura assinatura = new Assinatura();
-        assinatura.setCliente(cliente);
-        assinatura.setAplicativo(aplicativo);
-        assinatura.setInicioVigencia(sdf.parse(inicioVigencia));
-        assinatura.setFimVigencia(sdf.parse(fimVigencia));
+        Cliente cliente = clienteRepository.consultaPorCodigo(codigoCliente);
+        Aplicativo aplicativo = aplicativoRepository.consultaPorCodigo(codigoAplicativo);
+        Assinatura assinatura = new Assinatura(codigoCliente, aplicativo, cliente, inicioVigencia, fimVigencia);
+
 
         return assinaturaRepository.save(assinatura);
     } 
@@ -54,16 +51,16 @@ public class AssinaturaService {
         LocalDate hoje = LocalDate.now();
         switch (tipo.toUpperCase()) {
             case "ATIVAS":
-                return assinaturaRepository.findByFimVigenciaAfter(hoje);
+                return assinaturaRepository.consultaPorDataDeFimVigenciaPosterior(hoje);
             case "CANCELADAS":
-                return assinaturaRepository.findByFimVigenciaBefore(hoje);
+                return assinaturaRepository.consultaPorDataDeFimVigenciaAnterior(hoje);
             default:
-                return assinaturaRepository.findAll();
+                return assinaturaRepository.todos();
         }
     }
 
     public List<Assinatura> listarPorCliente(Long codigoCliente) {
-        return assinaturaRepository.ConsultaPorCodigoDeCliente(codigoCliente);
+        return assinaturaRepository.consultaPorCodigoDeCliente(codigoCliente);
     }
 
     public List<Assinatura> listarPorAplicativo(Long codigoAplicativo) {

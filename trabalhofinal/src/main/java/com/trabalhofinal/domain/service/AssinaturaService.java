@@ -37,9 +37,8 @@ public class AssinaturaService {
         Aplicativo aplicativo = aplicativoRepository.consultaPorCodigo(codigoAplicativo);
         Assinatura assinatura = new Assinatura(codigoCliente, aplicativo, cliente, inicioVigencia, fimVigencia);
 
-
         return assinaturaRepository.save(assinatura);
-    } 
+    }
 
     public List<Assinatura> listarPorTipo(String tipo) {
         LocalDate hoje = LocalDate.now();
@@ -61,12 +60,12 @@ public class AssinaturaService {
         return assinaturaRepository.consultaPorCodigoDeApp(codigoAplicativo);
     }
 
-    // public boolean assinaturaValida(Long codigoAssinatura) {
-    //     Optional<Assinatura> assinatura = assinaturaRepository.findById(codigoAssinatura);
-    //     if (assinatura == null) {
-    //         return false;
-    //     }
-    //     Date now = new Date(codigoAssinatura);
-    //     return assinatura.getFimVigencia().after(now);
-    // }
+    
+
+    public boolean assinaturaValida(Long codigoAssinatura) {
+        if (assinaturaRepository.consultaPorCodigo(codigoAssinatura) == null) {
+            return false;
+        }
+        return assinaturaRepository.consultaPorCodigo(codigoAssinatura).getFimVigencia().isAfter(LocalDate.now());
+    }
 }

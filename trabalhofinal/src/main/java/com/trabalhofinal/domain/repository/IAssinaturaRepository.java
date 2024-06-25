@@ -13,7 +13,7 @@ public interface IAssinaturaRepository {
     List<Assinatura> consultaPorDataDeFimVigenciaAnterior(LocalDate date);
     List<Assinatura> consultaPorCodigoDeCliente(long clienteCodigo);
     List<Assinatura> consultaPorCodigoDeApp(long aplicativoCodigo);
-    List<Assinatura> consultaPorCodigo(long codigo);
+    Assinatura consultaPorCodigo(long codigo);
     boolean save(Assinatura assinatura);
     boolean assinaturaValida(Long codigoAssinatura);
 }

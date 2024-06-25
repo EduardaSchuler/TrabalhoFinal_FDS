@@ -2,6 +2,8 @@ package com.trabalhofinal.adapters.persistencia;
 
 import java.util.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.trabalhofinal.domain.model.Aplicativo;
@@ -12,6 +14,7 @@ public class AplicativoRepositoryImpl implements IAplicativoRepository{
 
     private List<Aplicativo> apps;
 
+    @Autowired
     public AplicativoRepositoryImpl(){
         apps = new LinkedList<Aplicativo>();
         apps.add(new Aplicativo(1500, "Netflix", 39.90));

@@ -1,18 +1,15 @@
 package com.trabalhofinal.adapters.persistencia;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.springframework.cglib.core.Local;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.trabalhofinal.domain.model.Aplicativo;
 import com.trabalhofinal.domain.model.Assinatura;
-import com.trabalhofinal.domain.model.Cliente;
 import com.trabalhofinal.domain.repository.IAssinaturaRepository;
 
 
@@ -21,9 +18,8 @@ public class AssinaturaRepositoryImpl implements IAssinaturaRepository {
 
     List<Assinatura> assinaturas;
 
-    
-
-    public AssinaturaRepositoryImpl() throws ParseException {
+    @Autowired
+    public AssinaturaRepositoryImpl() {
 
         AplicativoRepositoryImpl arl = new AplicativoRepositoryImpl();
         ClienteRepositoryImpl crl = new ClienteRepositoryImpl();

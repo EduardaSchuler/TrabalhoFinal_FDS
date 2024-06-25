@@ -10,5 +10,4 @@ public interface IClienteRepository {
     boolean cadastrarNovo(Cliente cliente);
     Cliente editarNome(long codigo, String nomeNovo);
     Cliente editarEmail(long codigo, String emailNovo);
-     
 }

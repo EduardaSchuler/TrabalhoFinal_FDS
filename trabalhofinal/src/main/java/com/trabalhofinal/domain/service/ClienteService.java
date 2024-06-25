@@ -11,8 +11,12 @@ import com.trabalhofinal.domain.repository.IClienteRepository;
 
 @Service
 public class ClienteService {
-    @Autowired
     private IClienteRepository clienteRepository;
+
+    @Autowired
+    public ClienteService(IClienteRepository clientes){
+        this.clienteRepository = clientes;
+    }
 
     public List<Cliente> listarTodos() {
         return clienteRepository.todos();
@@ -33,5 +37,4 @@ public class ClienteService {
     public Cliente editarEmail(long codigo, String emailNovo){
         return clienteRepository.editarEmail(codigo, emailNovo);
     }
-   
 }

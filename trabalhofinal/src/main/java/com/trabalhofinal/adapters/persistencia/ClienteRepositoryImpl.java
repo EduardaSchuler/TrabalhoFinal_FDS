@@ -3,6 +3,8 @@ package com.trabalhofinal.adapters.persistencia;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.trabalhofinal.domain.model.Cliente;
@@ -13,7 +15,8 @@ public class ClienteRepositoryImpl implements IClienteRepository{
 
     List<Cliente> clientes;
     
-     public ClienteRepositoryImpl(){
+    @Autowired
+    public ClienteRepositoryImpl(){
         clientes = new LinkedList<Cliente>();
         clientes.add(new Cliente(2401, "Joana Palmeiras", "joanapalm@gmail.com"));
         clientes.add(new Cliente(2402, "Vitor Ulisses Machado", "vitorulisses@outlook.com"));

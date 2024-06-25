@@ -1,17 +1,18 @@
-package com.trabalhofinal.domain.model;
+package com.trabalhofinal.application.dtos;
 
-import javax.persistence.*;
+import com.trabalhofinal.domain.model.Cliente;
 
-public class Cliente {
+
+public class ClienteDTO {
 
     private long codigo; //Código identificador do cliente
     private String nome; //Nome do cliente
     private String email; //Email do cliente
     
-    public Cliente(long codigo, String nome, String email) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.email = email;
+    public ClienteDTO(Cliente cliente) {
+        this.codigo = cliente.getCodigo();
+        this.nome = cliente.getNome();
+        this.email = cliente.getEmail();
     }
 
     public long getCodigo() {
@@ -37,4 +38,9 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public static ClienteDTO fromModel(Cliente cliente){
+        return new ClienteDTO(cliente);
+    }
 }
+

@@ -19,6 +19,7 @@ public class ListaClientesUC {
 
     public List<ClienteDTO> executa(){
         return cs.listarTodos().stream()
-        .map(c->ClienteDTO.fromModel(c)).toList();
+        .map(c->ClienteDTO.fromModel(c))
+        .toList();
     }
 }

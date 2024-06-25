@@ -7,30 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
-import com.trabalhofinal.domain.model.Cliente;
+import com.trabalhofinal.domain.model.ClienteModel;
 import com.trabalhofinal.domain.repository.IClienteRepository;
 
 @Repository
 public class ClienteRepositoryImpl implements IClienteRepository{
 
-    List<Cliente> clientes;
+    List<ClienteModel> clientes;
     
     @Autowired
     public ClienteRepositoryImpl(){
-        clientes = new LinkedList<Cliente>();
-        clientes.add(new Cliente(2401, "Joana Palmeiras", "joanapalm@gmail.com"));
-        clientes.add(new Cliente(2402, "Vitor Ulisses Machado", "vitorulisses@outlook.com"));
-        clientes.add(new Cliente(2403, "Daniela Borges", "danieborges@hotmail.com"));
-        clientes.add(new Cliente(2404, "Roberto Nascimento Ferreira", "robertonasc@yahoo.com"));
+        clientes = new LinkedList<ClienteModel>();
+        clientes.add(new ClienteModel(2401, "Joana Palmeiras", "joanapalm@gmail.com"));
+        clientes.add(new ClienteModel(2402, "Vitor Ulisses Machado", "vitorulisses@outlook.com"));
+        clientes.add(new ClienteModel(2403, "Daniela Borges", "danieborges@hotmail.com"));
+        clientes.add(new ClienteModel(2404, "Roberto Nascimento Ferreira", "robertonasc@yahoo.com"));
     }
 
     @Override
-    public List<Cliente> todos(){
+    public List<ClienteModel> todos(){
         return clientes;
     }
 
     @Override
-    public Cliente consultaPorCodigo(long codigo){
+    public ClienteModel consultaPorCodigo(long codigo){
         return clientes.stream()
             .filter(app->app.getCodigo() == codigo)
             .findFirst()
@@ -38,18 +38,18 @@ public class ClienteRepositoryImpl implements IClienteRepository{
     }
 
     @Override
-    public boolean cadastrarNovo(Cliente cliente){
+    public boolean cadastrarNovo(ClienteModel cliente){
         return clientes.add(cliente);
     }
 
     @Override
-    public Cliente editarNome(long codigo, String nomeNovo){
+    public ClienteModel editarNome(long codigo, String nomeNovo){
         consultaPorCodigo(codigo).setNome(nomeNovo);
         return consultaPorCodigo(codigo);
     }
     
     @Override
-    public Cliente editarEmail(long codigo, String emailNovo){
+    public ClienteModel editarEmail(long codigo, String emailNovo){
         consultaPorCodigo(codigo).setEmail(emailNovo);
         return consultaPorCodigo(codigo);
     }

@@ -3,13 +3,13 @@ package com.trabalhofinal.domain.model;
 import javax.persistence.*;
 
 @Entity
-public class Usuario {
+public class UsuarioModel {
 
   @Id
   private String usuario; // Identificador do usuário para login
   private String senha; // Senha de acesso do usuário
   
-  public Usuario(String usuario, String senha) {
+  public UsuarioModel(String usuario, String senha) {
     this.usuario = usuario;
     this.senha = senha;
   }

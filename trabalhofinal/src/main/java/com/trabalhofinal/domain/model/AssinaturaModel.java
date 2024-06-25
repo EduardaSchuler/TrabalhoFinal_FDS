@@ -6,17 +6,17 @@ import javax.persistence.*;
 import org.springframework.cglib.core.Local;
 
 @Entity
-public class Assinatura {
+public class AssinaturaModel {
 
     @Id
     private long codigo; //Código da assinatura
-    private Aplicativo aplicativo; //Aplicativo de que trata a assinatura
-    private Cliente cliente; //Cliente de que trata a assinatura
+    private AplicativoModel aplicativo; //Aplicativo de que trata a assinatura
+    private ClienteModel cliente; //Cliente de que trata a assinatura
     private LocalDate inicioVigencia; //Início da vigência da assinatura
     private LocalDate fimVigencia; //Fim da vigência da assinatura
 
 
-    public Assinatura(long codigo, Aplicativo aplicativo, Cliente cliente, LocalDate inicioVigencia, LocalDate fimVigencia) {
+    public AssinaturaModel(long codigo, AplicativoModel aplicativo, ClienteModel cliente, LocalDate inicioVigencia, LocalDate fimVigencia) {
         this.codigo = codigo;
         this.aplicativo = aplicativo;
         this.cliente = cliente;
@@ -28,11 +28,11 @@ public class Assinatura {
         return codigo;
     }
 
-    public Aplicativo getAplicativo() {
+    public AplicativoModel getAplicativo() {
         return aplicativo;
     }
 
-    public Cliente getCliente() {
+    public ClienteModel getCliente() {
         return cliente;
     }
 
@@ -48,11 +48,11 @@ public class Assinatura {
         this.codigo = codigo;
     }
 
-    public void setAplicativo(Aplicativo aplicativo) {
+    public void setAplicativo(AplicativoModel aplicativo) {
         this.aplicativo = aplicativo;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(ClienteModel cliente) {
         this.cliente = cliente;
     }
 

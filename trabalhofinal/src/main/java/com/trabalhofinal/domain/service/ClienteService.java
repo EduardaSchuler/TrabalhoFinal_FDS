@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.trabalhofinal.domain.model.Cliente;
+import com.trabalhofinal.domain.model.ClienteModel;
 import com.trabalhofinal.domain.repository.IClienteRepository;
 
 @Service
@@ -18,23 +18,23 @@ public class ClienteService {
         this.clienteRepository = clientes;
     }
 
-    public List<Cliente> listarTodos() {
+    public List<ClienteModel> listarTodos() {
         return clienteRepository.todos();
     }
 
-    public Cliente consultaPorCodigo(long codigo){
+    public ClienteModel consultaPorCodigo(long codigo){
         return clienteRepository.consultaPorCodigo(codigo);
     }
 
-    public boolean cadastrarNovo(Cliente cliente) {
+    public boolean cadastrarNovo(ClienteModel cliente) {
         return clienteRepository.cadastrarNovo(cliente);
     }
 
-    public Cliente editarNome(long codigo, String nomeNovo){
+    public ClienteModel editarNome(long codigo, String nomeNovo){
         return clienteRepository.editarNome(codigo, nomeNovo);
     }
 
-    public Cliente editarEmail(long codigo, String emailNovo){
+    public ClienteModel editarEmail(long codigo, String emailNovo){
         return clienteRepository.editarEmail(codigo, emailNovo);
     }
 }

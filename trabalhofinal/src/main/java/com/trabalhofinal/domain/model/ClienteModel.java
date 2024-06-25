@@ -2,13 +2,13 @@ package com.trabalhofinal.domain.model;
 
 import javax.persistence.*;
 
-public class Cliente {
+public class ClienteModel {
 
     private long codigo; //Código identificador do cliente
     private String nome; //Nome do cliente
     private String email; //Email do cliente
     
-    public Cliente(long codigo, String nome, String email) {
+    public ClienteModel(long codigo, String nome, String email) {
         this.codigo = codigo;
         this.nome = nome;
         this.email = email;

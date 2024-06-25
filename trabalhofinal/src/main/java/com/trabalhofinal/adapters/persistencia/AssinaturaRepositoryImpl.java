@@ -65,11 +65,13 @@ public class AssinaturaRepositoryImpl implements IAssinaturaRepository {
     }
 
     @Override
-    public List<Assinatura> consultaPorCodigo(long codigo) {
+    public Assinatura consultaPorCodigo(long codigo) {
         return assinaturas.stream()
         .filter(assinatura->assinatura.getCodigo() == codigo)
-        .collect(Collectors.toList());
+        .findFirst()
+        .orElse(null);
     }
+
 
     @Override
     public boolean save(Assinatura assinatura) {

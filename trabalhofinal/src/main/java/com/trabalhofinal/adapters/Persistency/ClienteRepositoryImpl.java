@@ -1,10 +1,9 @@
-package com.trabalhofinal.adapters.persistencia;
+package com.trabalhofinal.adapters.Persistency;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.trabalhofinal.domain.model.ClienteModel;

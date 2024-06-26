@@ -1,22 +1,30 @@
-package com.trabalhofinal.domain.model;
+package com.trabalhofinal.application.dtos;
 
 import java.time.LocalDate;
 
-public class AssinaturaModel {
+import com.trabalhofinal.domain.model.AplicativoModel;
+import com.trabalhofinal.domain.model.AssinaturaModel;
+import com.trabalhofinal.domain.model.ClienteModel;
 
+public class AssinaturaDTO {
     private long codigo; //Código da assinatura
     private AplicativoModel aplicativo; //Aplicativo de que trata a assinatura
     private ClienteModel cliente; //Cliente de que trata a assinatura
     private LocalDate inicioVigencia; //Início da vigência da assinatura
     private LocalDate fimVigencia; //Fim da vigência da assinatura
+    private String status;
 
 
-    public AssinaturaModel(long codigo, AplicativoModel aplicativo, ClienteModel cliente, LocalDate inicioVigencia, LocalDate fimVigencia) {
-        this.codigo = codigo;
-        this.aplicativo = aplicativo;
-        this.cliente = cliente;
-        this.inicioVigencia = inicioVigencia;
-        this.fimVigencia = fimVigencia;
+    public AssinaturaDTO(AssinaturaModel assinatura) {
+        this.codigo = assinatura.getCodigo();
+        this.aplicativo = assinatura.getAplicativo();
+        this.cliente = assinatura.getCliente();
+        this.inicioVigencia = assinatura.getInicioVigencia();
+        this.fimVigencia = assinatura.getFimVigencia();
+    }
+
+    public String getStatus(){
+        return status;
     }
 
     public long getCodigo() {
@@ -39,6 +47,10 @@ public class AssinaturaModel {
         return fimVigencia;
     }
 
+    public void setStatus(String status){
+        this.status = status;
+    }
+
     public void setCodigo(long codigo) {
         this.codigo = codigo;
     }
@@ -59,4 +71,7 @@ public class AssinaturaModel {
         this.fimVigencia = fimVigencia;
     }
 
+    public static AssinaturaDTO fromModel(AssinaturaModel assinaturaModel){
+        return new AssinaturaDTO(assinaturaModel);
+    }
 }

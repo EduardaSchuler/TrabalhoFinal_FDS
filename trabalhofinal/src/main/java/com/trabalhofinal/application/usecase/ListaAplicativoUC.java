@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.trabalhofinal.application.dtos.AplicativoDTO;
-import com.trabalhofinal.application.dtos.ClienteDTO;
 import com.trabalhofinal.domain.service.AplicativoService;
 
 @Component

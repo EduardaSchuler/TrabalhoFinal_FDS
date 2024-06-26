@@ -1,11 +1,8 @@
 package com.trabalhofinal.domain.model;
 
-import javax.persistence.*;
 
-@Entity
 public class UsuarioModel {
 
-  @Id
   private String usuario; // Identificador do usuário para login
   private String senha; // Senha de acesso do usuário
   

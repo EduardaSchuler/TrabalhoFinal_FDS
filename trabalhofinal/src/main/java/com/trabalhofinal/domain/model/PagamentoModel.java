@@ -1,15 +1,9 @@
 package com.trabalhofinal.domain.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class PagamentoModel {
 
-    @Id
     private long codigo; //Identificador único do pagamento
     private AssinaturaModel assinatura; // Assinatura paga
     private Double valorPago; // Valor pago

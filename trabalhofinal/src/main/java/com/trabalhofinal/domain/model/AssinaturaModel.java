@@ -1,14 +1,9 @@
 package com.trabalhofinal.domain.model;
 
 import java.time.LocalDate;
-import javax.persistence.*;
 
-import org.springframework.cglib.core.Local;
-
-@Entity
 public class AssinaturaModel {
 
-    @Id
     private long codigo; //Código da assinatura
     private AplicativoModel aplicativo; //Aplicativo de que trata a assinatura
     private ClienteModel cliente; //Cliente de que trata a assinatura

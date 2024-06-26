@@ -1,7 +1,5 @@
 package com.trabalhofinal.domain.model;
 
-import javax.persistence.*;
-
 public class ClienteModel {
 
     private long codigo; //Código identificador do cliente

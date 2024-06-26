@@ -1,12 +1,10 @@
 package com.trabalhofinal.adapters.persistencia;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.trabalhofinal.domain.model.AssinaturaModel;
@@ -65,23 +63,22 @@ public class AssinaturaRepositoryImpl implements IAssinaturaRepository {
     }
 
     @Override
-    public List<AssinaturaModel> consultaPorCodigo(long codigo) {
+    public AssinaturaModel consultaPorCodigo(long codigo) {
         return assinaturas.stream()
         .filter(assinatura->assinatura.getCodigo() == codigo)
-        .collect(Collectors.toList());
+        .findFirst()
+        .orElse(null);
     }
+
 
     @Override
     public boolean save(AssinaturaModel assinatura) {
-       return assinaturas.add(assinatura);
+        return assinaturas.add(assinatura);
     }
 
     @Override
     public boolean assinaturaValida(Long codigoAssinatura) {
         return true;
     }
-    
-
-
 }
 

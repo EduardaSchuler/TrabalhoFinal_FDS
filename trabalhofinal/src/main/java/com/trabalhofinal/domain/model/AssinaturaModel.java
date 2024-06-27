@@ -4,7 +4,16 @@ import java.time.LocalDate;
 
 public class AssinaturaModel {
 
-    enum Status{    ATIVA, CANCELADA    }
+    public enum Status{        
+        ATIVA("Ativa"),
+        CANCELADA("Cancelada");
+
+        private final String value;
+
+        Status(String value) {
+            this.value = value;
+        }
+    }
 
     private long codigo; //Código da assinatura
     private AplicativoModel aplicativo; //Aplicativo de que trata a assinatura
@@ -20,7 +29,7 @@ public class AssinaturaModel {
         this.cliente = cliente;
         this.inicioVigencia = inicioVigencia;
         this.fimVigencia = fimVigencia;
-        this.status = fimVigencia.isAfter(LocalDate.now()) ? Status.ATIVA : Status.CANCELADA;
+        setStatus(fimVigencia.isAfter(LocalDate.now()) ? Status.ATIVA : Status.CANCELADA);
     }
 
     public long getCodigo() {
@@ -65,6 +74,10 @@ public class AssinaturaModel {
 
     public void setFimVigencia(LocalDate fimVigencia) {
         this.fimVigencia = fimVigencia;
+    }
+
+    public void setStatus(Status status){
+        this.status = status;
     }
 
 }

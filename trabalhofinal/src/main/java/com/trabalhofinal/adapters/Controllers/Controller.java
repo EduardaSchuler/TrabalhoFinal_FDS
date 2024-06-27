@@ -6,6 +6,7 @@ import com.trabalhofinal.application.dtos.AplicativoDTO;
 import com.trabalhofinal.application.dtos.AssinaturaDTO;
 import com.trabalhofinal.application.dtos.ClienteDTO;
 import com.trabalhofinal.application.usecase.ListaAplicativoUC;
+import com.trabalhofinal.application.usecase.ListaAssinaturasPorClienteUC;
 import com.trabalhofinal.application.usecase.ListaAssinaturasPorTipoUC;
 import com.trabalhofinal.application.usecase.ListaClientesUC;
 import java.util.List;
@@ -22,13 +23,15 @@ public class Controller {
     private ListaClientesUC listaClientesUC;
     private ListaAplicativoUC listaAplicativoUC;
     private ListaAssinaturasPorTipoUC listaAssinaturasPorTipoUC;
+    private ListaAssinaturasPorClienteUC listaAssinaturasPorClienteUC;
 
     @Autowired
     public Controller(ListaClientesUC listaClientesUC, ListaAplicativoUC listaAplicativoUC,
-                        ListaAssinaturasPorTipoUC listaAssinaturasPorTipoUC){
+                        ListaAssinaturasPorTipoUC listaAssinaturasPorTipoUC, ListaAssinaturasPorClienteUC listaAssinaturasPorClienteUC){
         this.listaClientesUC = listaClientesUC;
         this.listaAplicativoUC = listaAplicativoUC;
         this.listaAssinaturasPorTipoUC = listaAssinaturasPorTipoUC;
+        this.listaAssinaturasPorClienteUC = listaAssinaturasPorClienteUC;
     }
 
     @GetMapping("/")
@@ -53,5 +56,11 @@ public class Controller {
     @CrossOrigin(origins = "*")
     public List<AssinaturaDTO> assinaturasPorTipo(@PathVariable(value="tipo") String tipo) {
         return listaAssinaturasPorTipoUC.executa(tipo);
+    }
+
+    @GetMapping("/servcad/asscli/{codcli}")
+    @CrossOrigin(origins = "*")
+    public List<AssinaturaDTO> assinaturasPorCliente(@PathVariable(value="codcli") long codcli) {
+        return listaAssinaturasPorClienteUC.executa(codcli);
     }
 }

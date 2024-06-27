@@ -60,8 +60,6 @@ public class AssinaturaService {
         return assinaturaRepository.consultaPorCodigoDeApp(codigoAplicativo);
     }
 
-    
-
     public boolean assinaturaValida(Long codigoAssinatura) {
         if (assinaturaRepository.consultaPorCodigo(codigoAssinatura) == null) {
             return false;

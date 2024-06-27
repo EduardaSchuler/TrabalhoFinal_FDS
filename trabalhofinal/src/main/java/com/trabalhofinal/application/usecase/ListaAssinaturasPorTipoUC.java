@@ -15,15 +15,9 @@ public class ListaAssinaturasPorTipoUC {
         this.as = as;
     }
 
-
-    // nao esta retornando o status de cada objeto junto
     public List<AssinaturaDTO> executa(String tipo){
         return as.listarPorTipo(tipo).stream()
-            .map(assinatura-> {
-                AssinaturaDTO assiDTO = AssinaturaDTO.fromModel(assinatura);
-                assiDTO.setStatus(tipo);
-                return assiDTO;
-            })
-            .toList();
+        .map(assinatura->AssinaturaDTO.fromModel(assinatura))
+        .toList();
     }
 }

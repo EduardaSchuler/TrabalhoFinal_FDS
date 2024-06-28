@@ -28,7 +28,7 @@ public class AssinaturaService {
         return assinaturaRepository.todos();
     }
 
-    public boolean criarAssinatura(long codigoCliente, long codigoAplicativo) {       
+    public AssinaturaModel criarAssinatura(long codigoCliente, long codigoAplicativo) {       
         LocalDate inicioVigencia = LocalDate.now();
         LocalDate fimVigencia = LocalDate.now().plusDays(7);
 

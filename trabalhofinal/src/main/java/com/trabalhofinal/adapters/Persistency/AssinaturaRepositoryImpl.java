@@ -72,8 +72,9 @@ public class AssinaturaRepositoryImpl implements IAssinaturaRepository {
 
 
     @Override
-    public boolean save(AssinaturaModel assinatura) {
-        return assinaturas.add(assinatura);
+    public AssinaturaModel save(AssinaturaModel assinatura) {
+        assinaturas.add(assinatura);
+        return assinatura;
     }
 
     @Override

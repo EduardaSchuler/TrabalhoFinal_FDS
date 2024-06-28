@@ -2,6 +2,8 @@ package com.trabalhofinal.domain.repository;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import com.trabalhofinal.domain.model.AplicativoModel;
 import com.trabalhofinal.domain.model.AssinaturaModel;
 
 public interface IAssinaturaRepository {
@@ -11,6 +13,6 @@ public interface IAssinaturaRepository {
     List<AssinaturaModel> consultaPorCodigoDeCliente(long clienteCodigo);
     List<AssinaturaModel> consultaPorCodigoDeApp(long aplicativoCodigo);
     AssinaturaModel consultaPorCodigo(long codigo);
-    boolean save(AssinaturaModel assinatura);
+    AssinaturaModel save(AssinaturaModel assinatura);
     boolean assinaturaValida(Long codigoAssinatura);
 }

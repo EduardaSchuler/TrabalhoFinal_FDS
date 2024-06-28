@@ -6,6 +6,7 @@ import com.trabalhofinal.application.dtos.AplicativoDTO;
 import com.trabalhofinal.application.dtos.AssinaturaDTO;
 import com.trabalhofinal.application.dtos.ClienteDTO;
 import com.trabalhofinal.application.usecase.ListaAplicativoUC;
+import com.trabalhofinal.application.usecase.ListaAssinaturasPorAppUC;
 import com.trabalhofinal.application.usecase.ListaAssinaturasPorClienteUC;
 import com.trabalhofinal.application.usecase.ListaAssinaturasPorTipoUC;
 import com.trabalhofinal.application.usecase.ListaClientesUC;
@@ -24,14 +25,17 @@ public class Controller {
     private ListaAplicativoUC listaAplicativoUC;
     private ListaAssinaturasPorTipoUC listaAssinaturasPorTipoUC;
     private ListaAssinaturasPorClienteUC listaAssinaturasPorClienteUC;
+    private ListaAssinaturasPorAppUC listaAssinaturasPorAppUC;
 
     @Autowired
     public Controller(ListaClientesUC listaClientesUC, ListaAplicativoUC listaAplicativoUC,
-                        ListaAssinaturasPorTipoUC listaAssinaturasPorTipoUC, ListaAssinaturasPorClienteUC listaAssinaturasPorClienteUC){
+                        ListaAssinaturasPorTipoUC listaAssinaturasPorTipoUC, ListaAssinaturasPorClienteUC listaAssinaturasPorClienteUC,
+                        ListaAssinaturasPorAppUC listaAssinaturasPorAppUC){
         this.listaClientesUC = listaClientesUC;
         this.listaAplicativoUC = listaAplicativoUC;
         this.listaAssinaturasPorTipoUC = listaAssinaturasPorTipoUC;
         this.listaAssinaturasPorClienteUC = listaAssinaturasPorClienteUC;
+        this.listaAssinaturasPorAppUC = listaAssinaturasPorAppUC;
     }
 
     @GetMapping("/")
@@ -62,5 +66,11 @@ public class Controller {
     @CrossOrigin(origins = "*")
     public List<AssinaturaDTO> assinaturasPorCliente(@PathVariable(value="codcli") long codcli) {
         return listaAssinaturasPorClienteUC.executa(codcli);
+    }
+
+    @GetMapping("/servcad/assapp/{codapp}")
+    @CrossOrigin(origins = "*")
+    public List<AssinaturaDTO> assinaturasPorApp(@PathVariable(value="codapp") long codapp) {
+        return listaAssinaturasPorAppUC.executa(codapp);
     }
 }

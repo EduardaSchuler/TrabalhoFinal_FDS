@@ -10,7 +10,6 @@ import com.trabalhofinal.domain.repository.IAplicativoRepository;
 import com.trabalhofinal.domain.repository.IAssinaturaRepository;
 import com.trabalhofinal.domain.repository.IClienteRepository;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class AssinaturaService {
         return assinaturaRepository.todos();
     }
 
-    public boolean criarAssinatura(long codigoCliente, long codigoAplicativo) throws ParseException {        
+    public boolean criarAssinatura(long codigoCliente, long codigoAplicativo) {       
         LocalDate inicioVigencia = LocalDate.now();
         LocalDate fimVigencia = LocalDate.now().plusDays(7);
 
@@ -52,15 +51,15 @@ public class AssinaturaService {
         }
     }
 
-    public List<AssinaturaModel> listarPorCliente(Long codigoCliente) {
+    public List<AssinaturaModel> listarPorCliente(long codigoCliente) {
         return assinaturaRepository.consultaPorCodigoDeCliente(codigoCliente);
     }
 
-    public List<AssinaturaModel> listarPorAplicativo(Long codigoAplicativo) {
+    public List<AssinaturaModel> listarPorAplicativo(long codigoAplicativo) {
         return assinaturaRepository.consultaPorCodigoDeApp(codigoAplicativo);
     }
 
-    public boolean assinaturaValida(Long codigoAssinatura) {
+    public boolean assinaturaValida(long codigoAssinatura) {
         if (assinaturaRepository.consultaPorCodigo(codigoAssinatura) == null) {
             return false;
         }

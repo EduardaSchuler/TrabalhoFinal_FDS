@@ -6,6 +6,7 @@ import com.trabalhofinal.application.dtos.AplicativoDTO;
 import com.trabalhofinal.application.dtos.AssinaturaDTO;
 import com.trabalhofinal.application.dtos.ClienteDTO;
 import com.trabalhofinal.application.usecase.AssinaturaValidaUC;
+import com.trabalhofinal.application.usecase.AtualizaCustoAppUC;
 import com.trabalhofinal.application.usecase.CriaAssinatura;
 import com.trabalhofinal.application.usecase.ListaAplicativoUC;
 import com.trabalhofinal.application.usecase.ListaAssinaturasPorAppUC;
@@ -34,12 +35,13 @@ public class Controller {
     private ListaAssinaturasPorAppUC listaAssinaturasPorAppUC;
     private AssinaturaValidaUC assinaturaValidaUC;
     private CriaAssinatura criaAssinatura;
+    private AtualizaCustoAppUC atualizaCustoAppUC;
 
     @Autowired
     public Controller(ListaClientesUC listaClientesUC, ListaAplicativoUC listaAplicativoUC,
                         ListaAssinaturasPorTipoUC listaAssinaturasPorTipoUC, ListaAssinaturasPorClienteUC listaAssinaturasPorClienteUC,
                         ListaAssinaturasPorAppUC listaAssinaturasPorAppUC, AssinaturaValidaUC assinaturaValidaUC,
-                        CriaAssinatura criaAssinatura){
+                        CriaAssinatura criaAssinatura, AtualizaCustoAppUC atualizaCustoAppUC){
         this.listaClientesUC = listaClientesUC;
         this.listaAplicativoUC = listaAplicativoUC;
         this.listaAssinaturasPorTipoUC = listaAssinaturasPorTipoUC;
@@ -47,6 +49,7 @@ public class Controller {
         this.listaAssinaturasPorAppUC = listaAssinaturasPorAppUC;
         this.assinaturaValidaUC = assinaturaValidaUC;
         this.criaAssinatura = criaAssinatura;
+        this.atualizaCustoAppUC = atualizaCustoAppUC;
     }
 
     @GetMapping("/")
@@ -99,5 +102,12 @@ public class Controller {
 
         return criaAssinatura.executa(codigoCliente, codigoApp);
     }
-    
+
+    @PostMapping("/servcad/aplicativos/{idAplicativo}")
+    @CrossOrigin(origins = "*")
+    public AplicativoDTO AtualizaCustoAplicativo(@PathVariable(value= "idAplicativo") long idAplicativo, @RequestBody Map<String, Double> payload) {
+        Double novoCusto = payload.get("novoCusto");
+        return atualizaCustoAppUC.executa(idAplicativo, novoCusto);
+    }
+
 }

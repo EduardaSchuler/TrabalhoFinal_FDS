@@ -8,12 +8,12 @@ import org.springframework.stereotype.Repository;
 import com.trabalhofinal.domain.model.AplicativoModel;
 import com.trabalhofinal.domain.repository.IAplicativoRepository;
 
+
 @Repository
 public class AplicativoRepositoryImpl implements IAplicativoRepository{
 
     private List<AplicativoModel> apps;
 
-    @Autowired
     public AplicativoRepositoryImpl(){
         apps = new LinkedList<AplicativoModel>();
         apps.add(new AplicativoModel(1500, "Netflix", 39.90));

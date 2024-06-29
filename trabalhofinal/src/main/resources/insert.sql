@@ -14,15 +14,15 @@ INSERT INTO Cliente (codigo, nome, email) VALUES (2404, 'Roberto Nascimento Ferr
 
 -- inserts tabela de Assinaturas 
 
-INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo, inicioVigencia, fimVigencia, status) VALUES (2222, 1500, 2401, '2024-06-22', '2024-07-22');
-INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo, inicioVigencia, fimVigencia, status) VALUES (3333, 1600, 2402, '2024-02-22', '2025-03-22');
-INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo, inicioVigencia, fimVigencia, status) VALUES (4444, 1700, 2403, '2024-02-22', '2024-03-22');
-INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo, inicioVigencia, fimVigencia, status) VALUES (5555, 1800, 2404, '2024-02-22', '2024-08-22');
+INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo, inicioVigencia, fimVigencia, status) VALUES (2222, 1500, 2401, '2024-06-22', '2024-07-22', null);
+INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo, inicioVigencia, fimVigencia, status) VALUES (3333, 1600, 2402, '2024-02-22', '2024-03-22', null);
+INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo, inicioVigencia, fimVigencia, status) VALUES (4444, 1700, 2403, '2024-06-22', '2024-07-22', null);
+INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo, inicioVigencia, fimVigencia, status) VALUES (5555, 1800, 2404, '2024-06-22', '2024-07-22', null);
 
 
 -- inserts tabela de Pagamentos
 
 INSERT INTO Pagamento (codigo, codigoAssinatura, valorPago, dataPagamento, promocao) VALUES (001, 2222, 39.90, '2024-06-22', '10% de desconto');
 INSERT INTO Pagamento (codigo, codigoAssinatura, valorPago, dataPagamento, promocao) VALUES (002, 3333, 14.90, '2024-02-22', null);
-INSERT INTO Pagamento (codigo, codigoAssinatura, valorPago, dataPagamento, promocao) VALUES (003, 4444, 29.90, '2024-02-22', '10% de desconto');
-INSERT INTO Pagamento (codigo, codigoAssinatura, valorPago, dataPagamento, promocao) VALUES (004, 5555, 49.90, '2024-02-22', null);
+INSERT INTO Pagamento (codigo, codigoAssinatura, valorPago, dataPagamento, promocao) VALUES (003, 4444, 29.90, '2024-06-22', '10% de desconto');
+INSERT INTO Pagamento (codigo, codigoAssinatura, valorPago, dataPagamento, promocao) VALUES (004, 5555, 49.90, '2024-06-22', null);

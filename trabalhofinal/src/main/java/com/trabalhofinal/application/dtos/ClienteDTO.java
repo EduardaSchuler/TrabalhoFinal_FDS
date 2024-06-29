@@ -1,6 +1,6 @@
 package com.trabalhofinal.application.dtos;
 
-import com.trabalhofinal.domain.model.Cliente;
+import com.trabalhofinal.domain.model.ClienteModel;
 
 
 public class ClienteDTO {
@@ -9,7 +9,7 @@ public class ClienteDTO {
     private String nome; //Nome do cliente
     private String email; //Email do cliente
     
-    public ClienteDTO(Cliente cliente) {
+    public ClienteDTO(ClienteModel cliente) {
         this.codigo = cliente.getCodigo();
         this.nome = cliente.getNome();
         this.email = cliente.getEmail();
@@ -39,7 +39,7 @@ public class ClienteDTO {
         this.email = email;
     }
 
-    public static ClienteDTO fromModel(Cliente cliente){
+    public static ClienteDTO fromModel(ClienteModel cliente){
         return new ClienteDTO(cliente);
     }
 }

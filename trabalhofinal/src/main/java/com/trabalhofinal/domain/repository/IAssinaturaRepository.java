@@ -1,19 +1,18 @@
 package com.trabalhofinal.domain.repository;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
-import com.trabalhofinal.domain.model.Assinatura;
+import com.trabalhofinal.domain.model.AplicativoModel;
+import com.trabalhofinal.domain.model.AssinaturaModel;
 
 public interface IAssinaturaRepository {
-    List<Assinatura> todos();
-    List<Assinatura> consultaPorDataDeFimVigenciaPosterior(LocalDate date);
-    List<Assinatura> consultaPorDataDeFimVigenciaAnterior(LocalDate date);
-    List<Assinatura> consultaPorCodigoDeCliente(long clienteCodigo);
-    List<Assinatura> consultaPorCodigoDeApp(long aplicativoCodigo);
-    Assinatura consultaPorCodigo(long codigo);
-    boolean save(Assinatura assinatura);
+    List<AssinaturaModel> todos();
+    List<AssinaturaModel> consultaPorDataDeFimVigenciaPosterior(LocalDate date);
+    List<AssinaturaModel> consultaPorDataDeFimVigenciaAnterior(LocalDate date);
+    List<AssinaturaModel> consultaPorCodigoDeCliente(long clienteCodigo);
+    List<AssinaturaModel> consultaPorCodigoDeApp(long aplicativoCodigo);
+    AssinaturaModel consultaPorCodigo(long codigo);
+    AssinaturaModel save(AssinaturaModel assinatura);
     boolean assinaturaValida(Long codigoAssinatura);
 }

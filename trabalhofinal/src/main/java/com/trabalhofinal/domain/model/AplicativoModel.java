@@ -1,17 +1,12 @@
 package com.trabalhofinal.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+public class AplicativoModel {
 
-@Entity
-public class Aplicativo {
-
-    @Id
     private long codigo; // Código identificador do aplicativo
     private String nome; // Nome fantasia pelo qual o aplicativo é conhecido
     private Double custoMensal; // Valor da assinatura mensal
     
-    public Aplicativo(long codigo, String nome, Double custoMensal) {
+    public AplicativoModel(long codigo, String nome, Double custoMensal) {
         this.codigo = codigo;
         this.nome = nome;
         this.custoMensal = custoMensal;

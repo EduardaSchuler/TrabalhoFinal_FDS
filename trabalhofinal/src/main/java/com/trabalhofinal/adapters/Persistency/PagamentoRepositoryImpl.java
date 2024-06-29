@@ -1,39 +1,38 @@
-package com.trabalhofinal.adapters.persistencia;
+package com.trabalhofinal.adapters.Persistency;
 
 import java.time.LocalDate;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
-import com.trabalhofinal.domain.model.Assinatura;
-import com.trabalhofinal.domain.model.Pagamento;
+import com.trabalhofinal.domain.model.AssinaturaModel;
+import com.trabalhofinal.domain.model.PagamentoModel;
 import com.trabalhofinal.domain.repository.IPagamentoRepository;
 
 @Repository
 public class PagamentoRepositoryImpl implements IPagamentoRepository{
     
-    private List<Pagamento> pagamentos;
+    private List<PagamentoModel> pagamentos;
 
     @Autowired
     public PagamentoRepositoryImpl(){
-        pagamentos = new LinkedList<Pagamento>();
+        pagamentos = new LinkedList<PagamentoModel>();
 
         //coloquei null aqui porque nao sabia o que botar (by: lari)
-        pagamentos.add(new Pagamento(001, null, 54.90, null, "10% de desconto"));
-        pagamentos.add(new Pagamento(001, null, 54.90, null, "10% de desconto"));
-        pagamentos.add(new Pagamento(001, null, 54.90, null, "10% de desconto"));
-        pagamentos.add(new Pagamento(001, null, 54.90, null, "10% de desconto"));
+        pagamentos.add(new PagamentoModel(001, null, 54.90, null, "10% de desconto"));
+        pagamentos.add(new PagamentoModel(001, null, 54.90, null, "10% de desconto"));
+        pagamentos.add(new PagamentoModel(001, null, 54.90, null, "10% de desconto"));
+        pagamentos.add(new PagamentoModel(001, null, 54.90, null, "10% de desconto"));
     }
     
     @Override
-    public List<Pagamento> todos(){
+    public List<PagamentoModel> todos(){
         return pagamentos;
     }
 
     @Override
-    public Pagamento consultaPorCodigo(long codigo){
+    public PagamentoModel consultaPorCodigo(long codigo){
         return pagamentos.stream()
             .filter(app->app.getCodigo() == codigo)
             .findFirst()
@@ -41,30 +40,30 @@ public class PagamentoRepositoryImpl implements IPagamentoRepository{
     }
 
     @Override
-    public boolean cadastrarNovo(Pagamento pagamento){
+    public boolean cadastrarNovo(PagamentoModel pagamento){
         return pagamentos.add(pagamento);
     }
 
     @Override
-    public Pagamento atualizaPagamentoAssinatura(long codigo, Assinatura novaAssinatura){
+    public PagamentoModel atualizaPagamentoAssinatura(long codigo, AssinaturaModel novaAssinatura){
         consultaPorCodigo(codigo).setAssinatura(novaAssinatura);
         return consultaPorCodigo(codigo);
     }
 
     @Override
-    public Pagamento atualizaValorPago(long codigo, double novoValorPago){
+    public PagamentoModel atualizaValorPago(long codigo, double novoValorPago){
         consultaPorCodigo(codigo).setValorPago(novoValorPago);
         return consultaPorCodigo(codigo);
     }
 
     @Override
-    public Pagamento atualizaDataPagamento(long codigo, LocalDate novaDataPagamento){
+    public PagamentoModel atualizaDataPagamento(long codigo, LocalDate novaDataPagamento){
         consultaPorCodigo(codigo).setDataPagamento(novaDataPagamento);
         return consultaPorCodigo(codigo);
     }
 
     @Override
-    public Pagamento editarPromocao(long codigo, String novaPromocao){
+    public PagamentoModel editarPromocao(long codigo, String novaPromocao){
         consultaPorCodigo(codigo).setPromocao(novaPromocao);
         return consultaPorCodigo(codigo);
     }

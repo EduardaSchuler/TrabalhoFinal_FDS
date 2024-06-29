@@ -2,12 +2,12 @@ package com.trabalhofinal.domain.repository;
 
 import java.util.List;
 
-import com.trabalhofinal.domain.model.Cliente;
+import com.trabalhofinal.domain.model.ClienteModel;
 
 public interface IClienteRepository {
-    List<Cliente> todos();
-    Cliente consultaPorCodigo(long codigo);
-    boolean cadastrarNovo(Cliente cliente);
-    Cliente editarNome(long codigo, String nomeNovo);
-    Cliente editarEmail(long codigo, String emailNovo);
+    List<ClienteModel> todos();
+    ClienteModel consultaPorCodigo(long codigo);
+    boolean cadastrarNovo(ClienteModel cliente);
+    ClienteModel editarNome(long codigo, String nomeNovo);
+    ClienteModel editarEmail(long codigo, String emailNovo);
 }

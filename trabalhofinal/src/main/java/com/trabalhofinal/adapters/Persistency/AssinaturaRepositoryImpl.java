@@ -19,14 +19,14 @@ public class AssinaturaRepositoryImpl implements IAssinaturaRepository {
     @Autowired
     public AssinaturaRepositoryImpl() {
 
-        AplicativoRepositoryImpl arl = new AplicativoRepositoryImpl();
-        ClienteRepositoryImpl crl = new ClienteRepositoryImpl();
+        // AplicativoRepositoryImpl arl = new AplicativoRepositoryImpl();
+        // ClienteRepositoryImpl crl = new ClienteRepositoryImpl();
 
-        assinaturas = new LinkedList<AssinaturaModel>();
-        assinaturas.add(new AssinaturaModel(2222, arl.consultaPorCodigo(1500), crl.consultaPorCodigo(2401), LocalDate.of(2022, 02, 22), LocalDate.of(2033, 02, 22)));
-        assinaturas.add(new AssinaturaModel(3333, arl.consultaPorCodigo(1600), crl.consultaPorCodigo(2402), LocalDate.of(2022, 10, 22), LocalDate.of(2033, 10, 22)));
-        assinaturas.add(new AssinaturaModel(4444, arl.consultaPorCodigo(1700), crl.consultaPorCodigo(2403), LocalDate.of(2022, 10, 22), LocalDate.of(2033, 10, 22)));
-        assinaturas.add(new AssinaturaModel(5555, arl.consultaPorCodigo(1800), crl.consultaPorCodigo(2404), LocalDate.of(2022, 10, 22), LocalDate.of(2033, 10, 22)));
+        // assinaturas = new LinkedList<AssinaturaModel>();
+        // assinaturas.add(new AssinaturaModel(2222, arl.consultaPorCodigo(1500), crl.consultaPorCodigo(2401), LocalDate.of(2022, 02, 22), LocalDate.of(2033, 02, 22)));
+        // assinaturas.add(new AssinaturaModel(3333, arl.consultaPorCodigo(1600), crl.consultaPorCodigo(2402), LocalDate.of(2022, 10, 22), LocalDate.of(2033, 10, 22)));
+        // assinaturas.add(new AssinaturaModel(4444, arl.consultaPorCodigo(1700), crl.consultaPorCodigo(2403), LocalDate.of(2022, 10, 22), LocalDate.of(2033, 10, 22)));
+        // assinaturas.add(new AssinaturaModel(5555, arl.consultaPorCodigo(1800), crl.consultaPorCodigo(2404), LocalDate.of(2022, 10, 22), LocalDate.of(2033, 10, 22)));
     }
 
     @Override

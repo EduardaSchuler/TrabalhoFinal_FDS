@@ -30,5 +30,5 @@ CREATE TABLE Pagamento (
 ,   codigoAssinatura    BIGINT
 ,   valorPago           DECIMAL(10, 2) 
 ,   dataPagamento       DATE
-,   promocao            VARCHAR(255)
+,   promocao            VARCHAR(255)                DEFAULT('none')
 );

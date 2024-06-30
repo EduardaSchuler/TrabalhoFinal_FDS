@@ -14,10 +14,10 @@ INSERT INTO Cliente (codigo, nome, email) VALUES (2404, 'Roberto Nascimento Ferr
 
 -- inserts tabela de Assinaturas 
 
-INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo, inicioVigencia, fimVigencia, status) VALUES (2222, 1500, 2401, '2024-06-22', '2024-07-22', null);
-INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo, inicioVigencia, fimVigencia, status) VALUES (3333, 1600, 2402, '2024-02-22', '2024-03-22', null);
-INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo, inicioVigencia, fimVigencia, status) VALUES (4444, 1700, 2403, '2024-06-22', '2024-07-22', null);
-INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo, inicioVigencia, fimVigencia, status) VALUES (5555, 1800, 2404, '2024-06-22', '2024-07-22', null);
+INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo) VALUES (2222, 1500, 2401);
+INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo) VALUES (3333, 1600, 2402);
+INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo) VALUES (4444, 1700, 2403);
+INSERT INTO Assinatura (codigo, codigoCliente, codigoAplicativo) VALUES (5555, 1800, 2404);
 
 
 -- inserts tabela de Pagamentos

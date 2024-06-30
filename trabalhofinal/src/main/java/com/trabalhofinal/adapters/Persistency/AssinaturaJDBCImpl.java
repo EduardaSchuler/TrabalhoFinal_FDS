@@ -1,10 +1,14 @@
 package com.trabalhofinal.adapters.Persistency;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.trabalhofinal.domain.model.AplicativoModel;
@@ -28,9 +32,17 @@ public class AssinaturaJDBCImpl implements IAssinaturaRepository{
 
     @Override
     public AssinaturaModel consultaPorCodigo(long codigo) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+        String sql = "SELECT * FROM Assinatura WHERE codigo = ?";
+        AssinaturaModel assinatura = this.jdbcTemplate.queryForObject(
+            sql, new Object[]{codigo}, (ResultSet rs, int rowNum) -> {
+            AssinaturaModel ass = new AssinaturaModel(
+                rs.getLong("codigo"),
+                aplicativoJDBCImpl.consultaPorCodigo(rs.getLong("codigoAplicativo")), 
+                clienteJDBCImpl.consultaPorCodigo(rs.getLong("codigoCliente")));
+                return ass;});
+            return assinatura;
+        }
+
 
     @Override
     public List<AssinaturaModel> todos() {
@@ -50,9 +62,16 @@ public class AssinaturaJDBCImpl implements IAssinaturaRepository{
 
     @Override
     public List<AssinaturaModel> consultaPorCodigoDeCliente(long clienteCodigo) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+        String sql = "SELECT * FROM Assinatura WHERE codigo = ?";
+        List<AssinaturaModel> assinaturas = this.jdbcTemplate.query(
+            sql, new Object[]{clienteCodigo}, (ResultSet rs, int rowNum) -> {
+            AssinaturaModel ass = new AssinaturaModel(
+                rs.getLong("codigo"),
+                aplicativoJDBCImpl.consultaPorCodigo(rs.getLong("codigoAplicativo")), 
+                clienteJDBCImpl.consultaPorCodigo(rs.getLong("codigoCliente")));
+                return ass;});
+            return assinaturas;
+        }
 
     @Override
     public List<AssinaturaModel> consultaPorDataDeFimVigenciaAnterior(LocalDate date) {

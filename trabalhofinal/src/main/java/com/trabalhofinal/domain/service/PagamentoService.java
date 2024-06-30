@@ -8,10 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.trabalhofinal.domain.model.AssinaturaModel;
 import com.trabalhofinal.domain.model.PagamentoModel;
+import com.trabalhofinal.domain.repository.IAssinaturaRepository;
 import com.trabalhofinal.domain.repository.IPagamentoRepository;
 
 @Service
 public class PagamentoService {
+    @Autowired
+    private IAssinaturaRepository assinaturaRepository;
     @Autowired
     private IPagamentoRepository pagamentoRepository;
 
@@ -23,20 +26,17 @@ public class PagamentoService {
         return pagamentoRepository.consultaPorCodigo(codigo);
     }
 
-    public boolean cadastrarNovo(PagamentoModel pagamento){
-        return pagamentoRepository.cadastrarNovo(pagamento);
-    }
+    public String cadastrarNovo(PagamentoModel pagamento){
+        if(pagamento.getValorPago() < pagamento.getAssinatura().getAplicativo().getCustoMensal()){
+            return ("Valor estornado: " + pagamento.getValorPago() + "\n" + "Data de vencimento da Assinatura: " + pagamento.getAssinatura().getFimVigencia());
+        }
 
-    public PagamentoModel atualizaPagamentoAssinatura(long codigo, AssinaturaModel novaAssinatura){
-        return pagamentoRepository.atualizaPagamentoAssinatura(codigo, novaAssinatura);
-    }
-
-    public PagamentoModel atualizaValorPago(long codigo, Double novoValorPago){
-        return pagamentoRepository.atualizaValorPago(codigo, novoValorPago);
-    }
-
-    public PagamentoModel atualizaDataPagamento(long codigo, LocalDate novaDataPagamento){
-        return pagamentoRepository.atualizaDataPagamento(codigo, novaDataPagamento);
+        if(pagamento.getAssinatura().getFimVigencia().isBefore(LocalDate.now())){
+            pagamento.getAssinatura().setFimVigencia(LocalDate.now());
+        }
+        
+        pagamento.getAssinatura().setFimVigencia(pagamento.getAssinatura().getFimVigencia().plusDays(30));
+        return ("Valor estornado: " + (pagamento.getValorPago() - pagamento.getAssinatura().getAplicativo().getCustoMensal()) + "\n" + "Data de vencimento da Assinatura: " + pagamento.getAssinatura().getFimVigencia());
     }
 
     public PagamentoModel editarPromocao(long codigo, String novaPromocao){

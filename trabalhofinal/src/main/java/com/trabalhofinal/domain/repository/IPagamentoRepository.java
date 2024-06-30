@@ -11,9 +11,6 @@ public interface IPagamentoRepository {
     List<PagamentoModel> todos();
     PagamentoModel consultaPorCodigo(long codigo);
     boolean cadastrarNovo(PagamentoModel pagamento);
-    PagamentoModel atualizaPagamentoAssinatura(long codigo, AssinaturaModel novaAssinatura);
-    PagamentoModel atualizaValorPago(long codigo, double novoValorPago);
-    PagamentoModel atualizaDataPagamento(long codigo, LocalDate novaDataPagamento);
     PagamentoModel editarPromocao(long codigo, String novaPromocao);
     
 }

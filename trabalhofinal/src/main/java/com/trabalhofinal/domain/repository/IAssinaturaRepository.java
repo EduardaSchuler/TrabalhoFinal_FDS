@@ -14,5 +14,4 @@ public interface IAssinaturaRepository {
     List<AssinaturaModel> consultaPorCodigoDeApp(long aplicativoCodigo);
     AssinaturaModel consultaPorCodigo(long codigo);
     AssinaturaModel save(AssinaturaModel assinatura);
-    boolean assinaturaValida(boolean codigoAssinatura);
 }

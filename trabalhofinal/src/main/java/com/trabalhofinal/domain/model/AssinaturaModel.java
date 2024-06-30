@@ -23,12 +23,10 @@ public class AssinaturaModel {
     private Status status;
 
 
-    public AssinaturaModel(long codigo, AplicativoModel aplicativo, ClienteModel cliente, LocalDate inicioVigencia, LocalDate fimVigencia) {
+    public AssinaturaModel(long codigo, AplicativoModel aplicativo, ClienteModel cliente) {
         this.codigo = codigo;
         this.aplicativo = aplicativo;
         this.cliente = cliente;
-        this.inicioVigencia = inicioVigencia;
-        this.fimVigencia = fimVigencia;
         setStatus(fimVigencia.isAfter(LocalDate.now()) ? Status.ATIVA : Status.CANCELADA);
     }
 

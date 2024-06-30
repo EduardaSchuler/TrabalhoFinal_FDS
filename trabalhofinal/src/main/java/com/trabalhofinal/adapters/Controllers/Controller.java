@@ -94,10 +94,11 @@ public class Controller {
     @PostMapping("/servcad/assinaturas")
     @CrossOrigin(origins = "*")
     public AssinaturaDTO criaNovaAssinatura(@RequestBody Map<String, Long> payload) {
+        long codigo = payload.get("codigo");
         long codigoCliente = payload.get("codigoCliente");
         long codigoApp = payload.get("codigoApp");
 
-        return criaAssinatura.executa(codigoCliente, codigoApp);
+        return criaAssinatura.executa(codigo, codigoCliente, codigoApp);
     }
 
     @PostMapping("/servcad/aplicativos/{idAplicativo}")

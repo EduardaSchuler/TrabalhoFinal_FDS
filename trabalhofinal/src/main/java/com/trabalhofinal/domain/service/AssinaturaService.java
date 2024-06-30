@@ -28,13 +28,16 @@ public class AssinaturaService {
         return assinaturaRepository.todos();
     }
 
-    public AssinaturaModel criarAssinatura(long codigoCliente, long codigoAplicativo) {       
+    public AssinaturaModel criarAssinatura(long codigo, long codigoCliente, long codigoAplicativo) {       
         LocalDate inicioVigencia = LocalDate.now();
         LocalDate fimVigencia = LocalDate.now().plusDays(7);
 
         ClienteModel cliente = clienteRepository.consultaPorCodigo(codigoCliente);
         AplicativoModel aplicativo = aplicativoRepository.consultaPorCodigo(codigoAplicativo);
-        AssinaturaModel assinatura = new AssinaturaModel(codigoCliente, aplicativo, cliente, inicioVigencia, fimVigencia);
+        AssinaturaModel assinatura = new AssinaturaModel(codigo, aplicativo, cliente);
+
+        assinatura.setInicioVigencia(inicioVigencia);
+        assinatura.setFimVigencia(fimVigencia);
 
         return assinaturaRepository.save(assinatura);
     }
@@ -60,6 +63,6 @@ public class AssinaturaService {
     }
 
     public boolean assinaturaValida(long codigoAssinatura) {
-        return assinaturaRepository.assinaturaValida(assinaturaRepository.consultaPorCodigo(codigoAssinatura).getFimVigencia().isAfter(LocalDate.now()));
+        return assinaturaRepository.consultaPorCodigo(codigoAssinatura).getFimVigencia().isAfter(LocalDate.now());
     }
 }

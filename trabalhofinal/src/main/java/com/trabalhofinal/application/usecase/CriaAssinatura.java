@@ -13,8 +13,8 @@ public class CriaAssinatura {
         this.as = as;
     }
 
-    public AssinaturaDTO executa(long codigoCliente, long codigoAplicativo){
-        return new AssinaturaDTO(as.criarAssinatura(codigoCliente, codigoAplicativo));
+    public AssinaturaDTO executa(long codigo, long codigoCliente, long codigoAplicativo){
+        return new AssinaturaDTO(as.criarAssinatura(codigo, codigoCliente, codigoAplicativo));
     }
 
 }

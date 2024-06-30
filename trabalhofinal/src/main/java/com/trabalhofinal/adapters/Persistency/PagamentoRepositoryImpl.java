@@ -1,12 +1,10 @@
 package com.trabalhofinal.adapters.Persistency;
 
-import java.time.LocalDate;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.trabalhofinal.domain.model.AssinaturaModel;
 import com.trabalhofinal.domain.model.PagamentoModel;
 import com.trabalhofinal.domain.repository.IPagamentoRepository;
 
@@ -20,10 +18,10 @@ public class PagamentoRepositoryImpl implements IPagamentoRepository{
         pagamentos = new LinkedList<PagamentoModel>();
 
         //coloquei null aqui porque nao sabia o que botar (by: lari)
-        pagamentos.add(new PagamentoModel(001, null, 54.90, null, "10% de desconto"));
-        pagamentos.add(new PagamentoModel(001, null, 54.90, null, "10% de desconto"));
-        pagamentos.add(new PagamentoModel(001, null, 54.90, null, "10% de desconto"));
-        pagamentos.add(new PagamentoModel(001, null, 54.90, null, "10% de desconto"));
+        pagamentos.add(new PagamentoModel(001, null, 54.90, null));
+        pagamentos.add(new PagamentoModel(001, null, 54.90, null));
+        pagamentos.add(new PagamentoModel(001, null, 54.90, null));
+        pagamentos.add(new PagamentoModel(001, null, 54.90, null));
     }
     
     @Override

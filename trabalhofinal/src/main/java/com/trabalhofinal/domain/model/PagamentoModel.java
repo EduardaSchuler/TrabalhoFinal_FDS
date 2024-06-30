@@ -10,11 +10,11 @@ public class PagamentoModel {
     private LocalDate dataPagamento; // Data em que o pagamento foi efetivado
     private String promocao; // Código correspondente a promoção usada no pagamento. Pode ser um “none” no caso de não ser usado código nenhum.
 
-    public PagamentoModel(long codigo, AssinaturaModel assinatura,  Double valorPago, LocalDate dataPagamento, String promocao) {
+    public PagamentoModel(long codigo, AssinaturaModel assinatura,  Double valorPago, String promocao) {
         this.codigo = codigo;
         this.assinatura = assinatura;
         this.valorPago = valorPago;
-        this.dataPagamento = dataPagamento;
+        this.dataPagamento = LocalDate.now();
         this.promocao = promocao;
     }
 

@@ -60,9 +60,6 @@ public class AssinaturaService {
     }
 
     public boolean assinaturaValida(long codigoAssinatura) {
-        if (assinaturaRepository.consultaPorCodigo(codigoAssinatura) == null) {
-            return false;
-        }
-        return assinaturaRepository.consultaPorCodigo(codigoAssinatura).getFimVigencia().isAfter(LocalDate.now());
+        return assinaturaRepository.assinaturaValida(assinaturaRepository.consultaPorCodigo(codigoAssinatura).getFimVigencia().isAfter(LocalDate.now()));
     }
 }

@@ -78,8 +78,8 @@ public class AssinaturaRepositoryImpl implements IAssinaturaRepository {
     }
 
     @Override
-    public boolean assinaturaValida(Long codigoAssinatura) {
-        return true;
+    public boolean assinaturaValida(boolean valida) {
+        return valida;
     }
 }
 

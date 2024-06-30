@@ -45,24 +45,6 @@ public class PagamentoRepositoryImpl implements IPagamentoRepository{
     }
 
     @Override
-    public PagamentoModel atualizaPagamentoAssinatura(long codigo, AssinaturaModel novaAssinatura){
-        consultaPorCodigo(codigo).setAssinatura(novaAssinatura);
-        return consultaPorCodigo(codigo);
-    }
-
-    @Override
-    public PagamentoModel atualizaValorPago(long codigo, double novoValorPago){
-        consultaPorCodigo(codigo).setValorPago(novoValorPago);
-        return consultaPorCodigo(codigo);
-    }
-
-    @Override
-    public PagamentoModel atualizaDataPagamento(long codigo, LocalDate novaDataPagamento){
-        consultaPorCodigo(codigo).setDataPagamento(novaDataPagamento);
-        return consultaPorCodigo(codigo);
-    }
-
-    @Override
     public PagamentoModel editarPromocao(long codigo, String novaPromocao){
         consultaPorCodigo(codigo).setPromocao(novaPromocao);
         return consultaPorCodigo(codigo);

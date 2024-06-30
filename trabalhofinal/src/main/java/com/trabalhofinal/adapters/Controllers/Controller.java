@@ -52,7 +52,7 @@ public class Controller {
     @GetMapping("/")
     @CrossOrigin(origins = "*")
     public String welcomeMessage() {
-        return "TA RODANDO ESSE CARALHO";
+        return "Pagina Inicial";
     }
 
     @GetMapping("/servcad/clientes")

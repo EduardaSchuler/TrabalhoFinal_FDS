@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.trabalhofinal.application.dtos.AplicativoDTO;
 import com.trabalhofinal.application.dtos.AssinaturaDTO;
 import com.trabalhofinal.application.dtos.ClienteDTO;
+import com.trabalhofinal.application.dtos.PagamentoDTO;
 import com.trabalhofinal.application.usecase.AssinaturaValidaUC;
 import com.trabalhofinal.application.usecase.AtualizaCustoAppUC;
 import com.trabalhofinal.application.usecase.CriaAssinatura;
@@ -13,6 +14,8 @@ import com.trabalhofinal.application.usecase.ListaAssinaturasPorAppUC;
 import com.trabalhofinal.application.usecase.ListaAssinaturasPorClienteUC;
 import com.trabalhofinal.application.usecase.ListaAssinaturasPorTipoUC;
 import com.trabalhofinal.application.usecase.ListaClientesUC;
+import com.trabalhofinal.application.usecase.RegistrarPagamentoUC;
+
 import java.util.List;
 import java.util.Map;
 
@@ -33,12 +36,12 @@ public class Controller {
     private AssinaturaValidaUC assinaturaValidaUC;
     private CriaAssinatura criaAssinatura;
     private AtualizaCustoAppUC atualizaCustoAppUC;
+    private RegistrarPagamentoUC registrarPagamentoUC;
 
-    @Autowired
     public Controller(ListaClientesUC listaClientesUC, ListaAplicativoUC listaAplicativoUC,
                         ListaAssinaturasPorTipoUC listaAssinaturasPorTipoUC, ListaAssinaturasPorClienteUC listaAssinaturasPorClienteUC,
                         ListaAssinaturasPorAppUC listaAssinaturasPorAppUC, AssinaturaValidaUC assinaturaValidaUC,
-                        CriaAssinatura criaAssinatura, AtualizaCustoAppUC atualizaCustoAppUC){
+                        CriaAssinatura criaAssinatura, AtualizaCustoAppUC atualizaCustoAppUC, RegistrarPagamentoUC registrarPagamentoUC){
         this.listaClientesUC = listaClientesUC;
         this.listaAplicativoUC = listaAplicativoUC;
         this.listaAssinaturasPorTipoUC = listaAssinaturasPorTipoUC;
@@ -47,6 +50,7 @@ public class Controller {
         this.assinaturaValidaUC = assinaturaValidaUC;
         this.criaAssinatura = criaAssinatura;
         this.atualizaCustoAppUC = atualizaCustoAppUC;
+        this.registrarPagamentoUC = registrarPagamentoUC;
     }
 
     @GetMapping("/")
@@ -100,11 +104,21 @@ public class Controller {
         return criaAssinatura.executa(codigoCliente, codigoApp);
     }
 
+    @PostMapping("/registrarpagamento")
+    @CrossOrigin(origins = "*")
+    public String regitrarPagamento(@RequestBody Map<String, Long> codigos, @RequestBody Map<String, Double> valorPago, @RequestBody Map<String, String> promocao) {
+        long codigo = codigos.get("codigo");
+        long codigoAssinatura = codigos.get("codigoAssinatura");
+        Double valor = valorPago.get("valorPago");
+        String promo = promocao.get("promocao");
+        
+        return registrarPagamentoUC.executa(codigo, codigoAssinatura, valor, promo);
+    }
+
     @PostMapping("/servcad/aplicativos/{idAplicativo}")
     @CrossOrigin(origins = "*")
     public AplicativoDTO AtualizaCustoAplicativo(@PathVariable(value= "idAplicativo") long idAplicativo, @RequestBody Map<String, Double> payload) {
         Double novoCusto = payload.get("novoCusto");
         return atualizaCustoAppUC.executa(idAplicativo, novoCusto);
     }
-
 }

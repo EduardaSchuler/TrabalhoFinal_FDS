@@ -26,7 +26,8 @@ public class PagamentoService {
         return pagamentoRepository.consultaPorCodigo(codigo);
     }
 
-    public String cadastrarNovo(PagamentoModel pagamento){
+    public String cadastrarNovo(long codigo, long codigoAssinatura, Double valorPago, String promocao){
+        PagamentoModel pagamento = new PagamentoModel(codigoAssinatura, assinaturaRepository.consultaPorCodigo(codigoAssinatura), valorPago, promocao);
         if(pagamento.getValorPago() < pagamento.getAssinatura().getAplicativo().getCustoMensal()){
             return ("Valor estornado: " + pagamento.getValorPago() + "\n" + "Data de vencimento da Assinatura: " + pagamento.getAssinatura().getFimVigencia());
         }
